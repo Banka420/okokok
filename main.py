@@ -75,12 +75,15 @@ while running:
     screen.blit(questionbox, (0, 0))
 
     # for printing answer bar
-    if iconX < 799:
+    if iconX < 799 and iconX > 0:
         useranswertext = base_font.render(userans, True, (0, 0, 0))
         screen.blit(useranswertext, (0, 20))
-    else:
-        hello = base_font.render("YOU LOST", True, (0, 0, 0))
+    elif iconX < 0:
+        hello = base_font.render("YOU WON", True, (0, 0, 0))
         screen.blit(hello, (0, 20))
+    else:
+        bye = base_font.render("YOU LOST", True, (0, 0, 0))
+        screen.blit(bye, (0, 20))
 
 
     pygame.display.update()
