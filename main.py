@@ -24,7 +24,6 @@ iconY = 300
 def football(x, y):
     screen.blit(icon, (x, y))
 
-
 # defining user answer
 userans = ''
 
@@ -32,12 +31,14 @@ userans = ''
 n1 = random.randint(0, 100)
 n2 = random.randint(0, 100)
 ans1 = n1 + n2
-
+ans1 = str(ans1)
 nn1 = str(n1)
 nn2 = str(n2)
 nn3 = nn1 + " + " + nn2
 question = ("What is " + nn3 + "?")
-
+print(ans1)
+print(type(ans1))
+print(userans)
 running = True
 while running:
     for event in pygame.event.get():
@@ -48,6 +49,13 @@ while running:
                 userans = userans[:-1]
             else:
                 userans += event.unicode
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE:
+                if userans == ans1:
+                    userans = "CORRECT"
+                else:
+                    userans = "FALSE"
+
 
 
 
@@ -60,13 +68,14 @@ while running:
     football(iconX, iconY)
 
     # for printing the question
-    questionbox = base_font.render(question, True, (0, 0, 0))
+    questionbox = base_font.render(question , True, (0, 0, 0))
     screen.blit(questionbox, (0, 0))
 
     # for printing answer bar
     if iconX != 799:
         useranswertext = base_font.render(userans, True, (0, 0, 0))
         screen.blit(useranswertext, (0, 20))
+
 
 
 
