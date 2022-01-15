@@ -1,7 +1,7 @@
 import pygame
 import random
 
-# initialising pygame
+# initialising pygamee
 pygame.init()
 
 # making the screen
