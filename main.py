@@ -52,16 +52,16 @@ while running:
             else:
                 userans += event.unicode
             if event.key == pygame.K_SPACE:
-                print(repr(userans), repr(ans1))
-                if userans.strip() not in (ans1, "CORRECT"):
+
+                if userans.strip() not in (ans1):
                     userans = "WRONG"
                 else:
                     userans = ""
                     p+=0.008
 
-                    # not working
 
-    iconX += 0.02 - p
+
+    iconX += 0.05 - p
 
     # for making background green
     screen.fill((0, 255, 0))
@@ -74,13 +74,12 @@ while running:
     screen.blit(questionbox, (0, 0))
 
     # for printing answer bar
-    if iconX != 799:
+    if iconX < 799:
         useranswertext = base_font.render(userans, True, (0, 0, 0))
         screen.blit(useranswertext, (0, 20))
-        if userans == ans1:
-            print("TRUE")
-        else:
-            print("FALSE")
+    else:
+        hello = base_font.render("YOU LOST", True, (0, 0, 0))
+        screen.blit(hello, (0, 20))
 
 
     pygame.display.update()
