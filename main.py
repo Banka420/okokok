@@ -35,7 +35,7 @@ ans1 = str(ans1)
 nn1 = str(n1)
 nn2 = str(n2)
 nn3 = nn1 + " + " + nn2
-question = ("What is " + nn3 + "?")
+question = ("What is " + nn3 + " ? (Press Space After Writing ans)")
 print(ans1)
 print(type(ans1))
 print(userans)
