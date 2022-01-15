@@ -39,7 +39,7 @@ nn3 = nn1 + " + " + nn2
 question = ("What is " + nn3 + " ? (Press Space After Writing ans)")
 print(ans1 , type(ans1))
 
-
+p = 0
 
 running = True
 while running:
@@ -51,16 +51,17 @@ while running:
                 userans = userans[:-1]
             else:
                 userans += event.unicode
-
-        if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE:
-                if userans == ans1:
+                print(repr(userans), repr(ans1))
+                if userans.strip() not in (ans1, "CORRECT"):
+                    userans = "WRONG"
+                else:
                     userans = ""
-                elif userans != ans1 or userans != "CORRECT":
-                    userans = "FALSE"
+                    p+=0.008
+
                     # not working
 
-    iconX += 0.02
+    iconX += 0.02 - p
 
     # for making background green
     screen.fill((0, 255, 0))
