@@ -1,7 +1,7 @@
 import pygame
 import random
 
-# initialising pygamee
+# initialising pygame
 pygame.init()
 
 # making the screen
@@ -24,6 +24,7 @@ iconY = 300
 def football(x, y):
     screen.blit(icon, (x, y))
 
+
 # defining user answer
 userans = ''
 
@@ -36,9 +37,10 @@ nn1 = str(n1)
 nn2 = str(n2)
 nn3 = nn1 + " + " + nn2
 question = ("What is " + nn3 + " ? (Press Space After Writing ans)")
-print(ans1)
-print(type(ans1))
-print(userans)
+print(ans1 , type(ans1))
+
+
+
 running = True
 while running:
     for event in pygame.event.get():
@@ -49,16 +51,14 @@ while running:
                 userans = userans[:-1]
             else:
                 userans += event.unicode
+
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE:
                 if userans == ans1:
-                    userans = "CORRECT"
-                else:
+                    userans = ""
+                elif userans != ans1 or userans != "CORRECT":
                     userans = "FALSE"
-                    #not working
-
-
-
+                    # not working
 
     iconX += 0.02
 
@@ -69,15 +69,17 @@ while running:
     football(iconX, iconY)
 
     # for printing the question
-    questionbox = base_font.render(question , True, (0, 0, 0))
+    questionbox = base_font.render(question, True, (0, 0, 0))
     screen.blit(questionbox, (0, 0))
 
     # for printing answer bar
     if iconX != 799:
         useranswertext = base_font.render(userans, True, (0, 0, 0))
         screen.blit(useranswertext, (0, 20))
-
-
+        if userans == ans1:
+            print("TRUE")
+        else:
+            print("FALSE")
 
 
     pygame.display.update()
