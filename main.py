@@ -42,6 +42,7 @@ print(ans1 , type(ans1))
 p = 0
 
 running = True
+#for user inputs
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
