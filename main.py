@@ -67,7 +67,7 @@ while running:
             # for entering the answer
             if event.key == pygame.K_SPACE:
                 # if user enters wrong answer
-                if userans.strip() not in (ans1):
+                if userans.strip() not in (ans1) or userans.strip == "":
                     userans = "WRONG"
                 else:
                     # for printing new question after user enters right answer
