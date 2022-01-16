@@ -15,6 +15,10 @@ pygame.display.set_caption("OP")
 icon = pygame.image.load('football.png')
 pygame.display.set_icon(icon)
 
+#Background
+background = pygame.image.load('Untitled-1.png')
+
+
 # starting position of ball (basically centre)
 iconX = 400
 iconY = 300
@@ -31,18 +35,19 @@ userans = ''
 # making the question
 n1 = random.randint(0, 100)
 n2 = random.randint(0, 100)
+
 ans1 = n1 + n2
 ans1 = str(ans1)
 nn1 = str(n1)
 nn2 = str(n2)
 nn3 = nn1 + " + " + nn2
 question = ("What is " + nn3 + " ? (Press Space After Writing ans)")
-print(ans1 , type(ans1))
+
 
 p = 0
 
 running = True
-#for user inputs
+# for user inputs
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -58,14 +63,24 @@ while running:
                     userans = "WRONG"
                 else:
                     userans = ""
-                    p+=0.008
+                    p += 0.008
+                    n1 = random.randint(0, 100)
+                    n2 = random.randint(0, 100)
 
+                    ans1 = n1 + n2
+                    ans1 = str(ans1)
+                    nn1 = str(n1)
+                    nn2 = str(n2)
+                    nn3 = nn1 + " + " + nn2
+                    question = ("What is " + nn3 + " ? (Press Space After Writing ans)")
 
-
-    iconX += 0.05 - p
+    iconX += 0.04 - p
 
     # for making background green
     screen.fill((0, 255, 0))
+
+    #making background appear
+    screen.blit(background , (0,0))
 
     # for making the football appear
     football(iconX, iconY)
@@ -84,6 +99,5 @@ while running:
     else:
         bye = base_font.render("YOU LOST", True, (0, 0, 0))
         screen.blit(bye, (0, 20))
-
 
     pygame.display.update()
