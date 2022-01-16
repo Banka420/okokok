@@ -80,7 +80,7 @@ while running:
 
 
 
-    #for making the ball move left/right
+    #for making the ball move left/right.
     iconX += 0.04 - p
 
     # for making background green
