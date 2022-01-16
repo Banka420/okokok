@@ -11,7 +11,7 @@ screen = pygame.display.set_mode((800, 600))
 base_font = pygame.font.Font(None, 32)
 
 # setting title and logo
-pygame.display.set_caption("OP")
+pygame.display.set_caption("BALL GAME")
 icon = pygame.image.load('football.png')
 pygame.display.set_icon(icon)
 
@@ -42,21 +42,29 @@ nn2 = str(n2)
 nn3 = nn1 + " + " + nn2
 question = ("What is " + nn3 + " ? (Press Space After Writing ans)")
 
-
-#making variable for the amount by which the ball moves left when user gives the right answer
+# making variable for the amount by which the ball moves left when user gives the right answer
 p = 0
 
 running = True
 # for user inputs
 while running:
     for event in pygame.event.get():
+
+        # for making the game quit after user presses cross button
+
         if event.type == pygame.QUIT:
             running = False
+
+        # making the typing mechanism
         if event.type == pygame.KEYDOWN:
+            # making backspace mechanism
             if event.key == pygame.K_BACKSPACE:
                 userans = userans[:-1]
+            # for making the letter mechanism
             else:
                 userans += event.unicode
+
+            # for entering the answer
             if event.key == pygame.K_SPACE:
                 # if user enters wrong answer
                 if userans.strip() not in (ans1):
@@ -75,13 +83,13 @@ while running:
                     nn3 = nn1 + " + " + nn2
                     question = ("What is " + nn3 + " ? (Press Space After Writing ans)")
 
+                    p += 0.008
+
                     '''for increasing the value of 'p' (variable which dcides the amount by which ball 
                     moves left / the speed of going right decreases when user enters correct answer)'''
 
-
-
-    #for making the ball move left/right.
-    iconX += 0.04 - p
+    # for making the ball move left/right.
+    iconX += 0.042 - p
 
     # for making background green
     screen.fill((0, 255, 0))
@@ -107,4 +115,7 @@ while running:
         bye = base_font.render("YOU LOST", True, (0, 0, 0))
         screen.blit(bye, (0, 20))
 
+    print(ans1)
+
+    # for constantly updating the screen
     pygame.display.update()
