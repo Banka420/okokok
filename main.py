@@ -58,10 +58,11 @@ while running:
             else:
                 userans += event.unicode
             if event.key == pygame.K_SPACE:
-
+                #if user enters wrong answer
                 if userans.strip() not in (ans1):
                     userans = "WRONG"
                 else:
+                    #for printing new question after user enters right answer
                     userans = ""
                     p += 0.008
                     n1 = random.randint(0, 100)
