@@ -15,9 +15,8 @@ pygame.display.set_caption("OP")
 icon = pygame.image.load('football.png')
 pygame.display.set_icon(icon)
 
-#Background
+# Background
 background = pygame.image.load('Untitled-1.png')
-
 
 # starting position of ball (basically centre)
 iconX = 400
@@ -44,6 +43,7 @@ nn3 = nn1 + " + " + nn2
 question = ("What is " + nn3 + " ? (Press Space After Writing ans)")
 
 
+#making variable for the amount by which the ball moves left when user gives the right answer
 p = 0
 
 running = True
@@ -58,13 +58,13 @@ while running:
             else:
                 userans += event.unicode
             if event.key == pygame.K_SPACE:
-                #if user enters wrong answer
+                # if user enters wrong answer
                 if userans.strip() not in (ans1):
                     userans = "WRONG"
                 else:
-                    #for printing new question after user enters right answer
+                    # for printing new question after user enters right answer
                     userans = ""
-                    p += 0.008
+
                     n1 = random.randint(0, 100)
                     n2 = random.randint(0, 100)
 
@@ -75,13 +75,19 @@ while running:
                     nn3 = nn1 + " + " + nn2
                     question = ("What is " + nn3 + " ? (Press Space After Writing ans)")
 
+                    '''for increasing the value of 'p' (variable which dcides the amount by which ball 
+                    moves left / the speed of going right decreases when user enters correct answer)'''
+
+
+
+    #for making the ball move left/right
     iconX += 0.04 - p
 
     # for making background green
     screen.fill((0, 255, 0))
 
-    #making background appear
-    screen.blit(background , (0,0))
+    # making background appear
+    screen.blit(background, (0, 0))
 
     # for making the football appear
     football(iconX, iconY)
